@@ -1,22 +1,32 @@
 {
+  "energia": {
+    "files": [
+      {
+        "name": "Apply.ps1",
+        "sha256": "521b0847e1ffb79e079f4e0450d27fc6233b8dad35a53ac16c390177e7fe14ed"
+      }
+    ],
+    "product": "energia",
+    "version": "1.2.1"
+  },
   "connection": {
     "files": [
       {
-        "sha256": "0108df06dff1abf69f4fc732931fe821a04e768a88706eb1d563bdd786808a23",
-        "name": "Apply.ps1"
+        "name": "Apply.ps1",
+        "sha256": "0108df06dff1abf69f4fc732931fe821a04e768a88706eb1d563bdd786808a23"
       }
     ],
     "product": "connection",
     "version": "1.0.1"
   },
-  "energia": {
+  "papelparede": {
     "files": [
       {
-        "sha256": "521b0847e1ffb79e079f4e0450d27fc6233b8dad35a53ac16c390177e7fe14ed",
-        "name": "Apply.ps1"
+        "name": "Apply.ps1",
+        "sha256": "140f0fd0a1646f20cdf25b36f8d5397a28ab650f1a642d82d2c4ec4b748b450b"
       }
     ],
-    "product": "energia",
-    "version": "1.2.1"
+    "product": "papelparede",
+    "version": "1.0.0"
   }
 }

@@ -1,0 +1,2 @@
+# Preserve exact bytes used by manifest SHA256 hashes and embedded installers.
+* -text

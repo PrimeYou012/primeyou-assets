@@ -1,2 +1,2 @@
 # Preserve exact bytes used by manifest SHA256 hashes and embedded installers.
-* -text
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

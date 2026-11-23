@@ -89,3 +89,28 @@ Write-Host 'Configuracoes aplicadas com sucesso:' -ForegroundColor Green
     [PSCustomObject]@{ Alimentacao = 'Bateria'; Modo = 'Melhor eficiencia de energia'; DesligarTela = '15 minutos'; Suspender = '1 hora'; Hibernar = '1 hora' }
 ) | Format-Table -AutoSize
 Write-Host 'Economia de energia automatica: bateria em 20%.'
+
+# Layout legivel pelo Explorer, em caminho permanente fora da versao candidata.
+$layoutPath = Join-Path (Split-Path $PSScriptRoot -Parent) 'Barra-Tarefas.xml'
+$layoutXml = @"
+<?xml version="1.0" encoding="utf-8"?>
+<LayoutModificationTemplate xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification" xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout" Version="1">
+  <CustomTaskbarLayoutCollection>
+    <defaultlayout:TaskbarLayout>
+      <taskbar:TaskbarPinList>
+        <taskbar:DesktopApp DesktopApplicationID="Microsoft.Office.OUTLOOK.EXE.15" />
+        <taskbar:UWA AppUserModelID="MSTeams_8wekyb3d8bbwe!MSTeams" />
+        <taskbar:DesktopApp DesktopApplicationID="Chrome" />
+      </taskbar:TaskbarPinList>
+    </defaultlayout:TaskbarLayout>
+  </CustomTaskbarLayoutCollection>
+</LayoutModificationTemplate>
+
+"@
+if (-not (Test-Path -LiteralPath $layoutPath) -or [IO.File]::ReadAllText($layoutPath) -cne $layoutXml) {
+    [IO.File]::WriteAllText($layoutPath, $layoutXml, [Text.UTF8Encoding]::new($false))
+}
+$policy = 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer'
+if (-not (Test-Path -LiteralPath $policy)) { New-Item -Path $policy -Force | Out-Null }
+New-ItemProperty -Path $policy -Name StartLayoutFile -Value $layoutPath -PropertyType ExpandString -Force | Out-Null
+New-ItemProperty -Path $policy -Name LockedStartLayout -Value 1 -PropertyType DWord -Force | Out-Null

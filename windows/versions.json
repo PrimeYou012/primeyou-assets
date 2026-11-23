@@ -1,0 +1,22 @@
+{
+  "connection": {
+    "files": [
+      {
+        "sha256": "0108df06dff1abf69f4fc732931fe821a04e768a88706eb1d563bdd786808a23",
+        "name": "Apply.ps1"
+      }
+    ],
+    "product": "connection",
+    "version": "1.0.1"
+  },
+  "energia": {
+    "files": [
+      {
+        "sha256": "521b0847e1ffb79e079f4e0450d27fc6233b8dad35a53ac16c390177e7fe14ed",
+        "name": "Apply.ps1"
+      }
+    ],
+    "product": "energia",
+    "version": "1.2.1"
+  }
+}
